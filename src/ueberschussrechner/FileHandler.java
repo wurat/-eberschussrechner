@@ -1,14 +1,32 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ueberschussrechner;
+import java.util.ArrayList;
+import java.io.BufferedReader;
+import java.io.FileReader;
 
-/**
- *
- * @author schoe
- */
 public class FileHandler {
     
+    public ArrayList laden(){
+        ArrayList<String> Data = new ArrayList<String>();
+        int Zeilennummer = 0;
+        String CSVPath ="";
+        
+        //BufferedReader br = new BufferedReader(new FileReader(CSVPath))
+        return Data;
+    
+    }
+
+
+    public boolean speichern(){
+        boolean status=false;
+       
+        
+        return status;
+    }
+    
+    public boolean drucken(){
+       boolean status=false;
+                
+       
+       return status;
+    }
 }
