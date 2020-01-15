@@ -12,7 +12,7 @@ package ueberschussrechner;
 public class Dateiverarbeitung {
     double ergebnis=0;
     
-    
+    //
     
     if //button = einnahme --> Tom fragen 
     public double buchen(double betrag, double ergebnis){
