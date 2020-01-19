@@ -8,7 +8,8 @@ public class FileHandler {
    public static void getArraylist (){
        ArrayList<String> Data = new ArrayList<String>();
    }
-    
+      
+   
     public ArrayList laden(){
         ArrayList<String> Data = new ArrayList<String>();
         int Zeilennummer = 0;
