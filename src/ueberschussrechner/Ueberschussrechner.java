@@ -1,24 +1,36 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ueberschussrechner;
 
-/**
- *
- * @author schoe
- */
 public class Ueberschussrechner {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
+        
+        GUI gui = new GUI();
+        gui.setVisible(true);
+        
+        //Deklaration
+        String [][] data = new String [100][5];
         
         
         FileHandler filehandler = new FileHandler();
-        filehandler.laden();
+        filehandler.laden(data);
+        
+        for (int i=0; i < data.length; i++) {
+        
+            for(int j=0; j < data[i].length; j++){
+                
+                gui.Buchungstabelle.setValueAt(data [i][j], i,j);
+                gui.repaint();
+            }
+    }
+        
+        for(String[] tempString : data) {
+            for(String string : tempString){
+                System.out.println(string);
+            }
+        }
+
+        
+        
     }
     
 }

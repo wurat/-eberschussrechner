@@ -16,14 +16,14 @@ public class FileHandler {
         
     }
 
-    public ArrayList laden() {
-        //ArrayList<String> Data = new ArrayList<String>();
-        final int Arraydimensionen = 5;
-        ArrayList<ArrayList<String>> Data = new ArrayList<>(Arraydimensionen);
-        /*for (int i=0; i<Arraydimensionen; i++)
-        {
-            Data.add(new ArrayList<String>());
-        }*/
+    public void berechneMittelwert(double[]a){
+       
+       a = new double[5];
+    }
+    
+    public String [][] laden(String[][] data) {
+        
+        
         
         final String CSVPath = "C:\\Program Files\\data.txt";
         
@@ -32,22 +32,28 @@ public class FileHandler {
            BufferedReader buffer = new BufferedReader(new FileReader(CSVPath)); 
            String zeile = buffer.readLine(); 
            
+           int zeilennummer=0;
+           
             while (zeile != null) {
-                int zeilenummer=0;
-            
+                
                 String split[]= zeile.split(";");
-                Data.add(zeilenummer, split[4]);
-            
-                zeilenummer ++;
-                System.out.print(Data);
+                data[zeilennummer] [0]=split[0] ;
+                data[zeilennummer] [1]=split[1] ;
+                data[zeilennummer] [2]=split[2] ;
+                data[zeilennummer] [3]=split[3] ;
+                data[zeilennummer] [4]=split[4] ;
+                
+                zeilennummer ++;
+                System.out.print(data);
                 zeile = buffer.readLine();
             }
             buffer.close();
+            System.out.println(data[0][0]);
             
         } catch (Exception e) {
             System.out.println("Fehler beim Lesen der Datei");
         }
-        return Data;
+        return data;
     }
 
     public boolean speichern() {

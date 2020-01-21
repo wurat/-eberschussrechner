@@ -41,6 +41,10 @@ public class GUI extends javax.swing.JFrame {
         Saldo = new javax.swing.JLabel();
         Saldoanzeige = new javax.swing.JTextField();
         Buchungen = new javax.swing.JLabel();
+        Datumseingabe1 = new javax.swing.JTextField();
+        Datumseingabe2 = new javax.swing.JTextField();
+        Datum1 = new javax.swing.JLabel();
+        Datum2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -153,7 +157,15 @@ public class GUI extends javax.swing.JFrame {
             new String [] {
                 "Buchungsdatum", "Einnahme", "Ausgabe", "Bemerkung", "Belegnummer"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         Tabellenscroller.setViewportView(Buchungstabelle);
 
         Datum.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -214,6 +226,24 @@ public class GUI extends javax.swing.JFrame {
         Buchungen.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         Buchungen.setText("Buchungen");
 
+        Datumseingabe1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Datumseingabe1ActionPerformed(evt);
+            }
+        });
+
+        Datumseingabe2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Datumseingabe2ActionPerformed(evt);
+            }
+        });
+
+        Datum1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Datum1.setText("Beleg Nr.");
+
+        Datum2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Datum2.setText("Bemerkung");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -226,34 +256,41 @@ public class GUI extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(32, 32, 32)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(Betrag)
-                                    .addComponent(Datum))
-                                .addGap(30, 30, 30)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(Betrag)
+                                        .addComponent(Datum))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(2, 2, 2)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(Datum1)
+                                            .addComponent(Datum2))))
+                                .addGap(28, 28, 28)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(Betragseingabe, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Datumseingabe, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(Datumseingabe, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Datumseingabe2, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Datumseingabe1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(34, 34, 34)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(Ladenbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(Soeichernbutton, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE))
-                                        .addComponent(Buchenbutton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(Druckenbutton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(Ladenbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(Soeichernbutton, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE))
+                                    .addComponent(Druckenbutton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addComponent(Saldo)
                                         .addGap(88, 88, 88))
                                     .addComponent(Saldoanzeige, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addComponent(Buchungen)
-                                        .addGap(59, 59, 59))))))
+                                        .addGap(59, 59, 59))
+                                    .addComponent(Buchenbutton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(247, 247, 247)
                         .addComponent(Buchungsübersicht)))
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -266,7 +303,7 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(97, 97, 97)
                 .addComponent(Buchungen)
-                .addGap(59, 59, 59)
+                .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Datum)
                     .addComponent(Datumseingabe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -274,9 +311,17 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Betrag)
                     .addComponent(Betragseingabe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Datumseingabe2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Datum2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Datumseingabe1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Datum1))
+                .addGap(29, 29, 29)
                 .addComponent(Buchenbutton)
-                .addGap(68, 68, 68)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Ladenbutton)
                     .addComponent(Soeichernbutton))
@@ -334,6 +379,14 @@ public class GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_SaldoanzeigeActionPerformed
 
+    private void Datumseingabe1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Datumseingabe1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Datumseingabe1ActionPerformed
+
+    private void Datumseingabe2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Datumseingabe2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Datumseingabe2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -374,10 +427,14 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField Betragseingabe;
     private javax.swing.JButton Buchenbutton;
     private javax.swing.JLabel Buchungen;
-    private javax.swing.JTable Buchungstabelle;
+    public javax.swing.JTable Buchungstabelle;
     private javax.swing.JLabel Buchungsübersicht;
     private javax.swing.JLabel Datum;
+    private javax.swing.JLabel Datum1;
+    private javax.swing.JLabel Datum2;
     private javax.swing.JTextField Datumseingabe;
+    private javax.swing.JTextField Datumseingabe1;
+    private javax.swing.JTextField Datumseingabe2;
     private javax.swing.JButton Druckenbutton;
     private javax.swing.JButton Ladenbutton;
     private javax.swing.JLabel Saldo;
