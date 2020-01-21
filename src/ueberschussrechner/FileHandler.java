@@ -1,37 +1,34 @@
 package ueberschussrechner;
+
 import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
 public class FileHandler {
-    
-   public static void getArraylist (){
-       ArrayList<String> Data = new ArrayList<String>();
-   }
-      
-   
-    public ArrayList laden(){
+
+    public static void getArraylist() {
+        ArrayList<String> Data = new ArrayList<String>();
+    }
+
+    public ArrayList laden() {
         ArrayList<String> Data = new ArrayList<String>();
         int Zeilennummer = 0;
-        String CSVPath ="";
-        
-        //BufferedReader br = new BufferedReader(new FileReader(CSVPath))
+        int CSVPath = "C:\\Daten.csv";
+
+        BufferedReader br = new BufferedReader(new FileReader(CSVPath));
         return Data;
-    
+
     }
 
+    public boolean speichern() {
+        boolean status = false;
 
-    public boolean speichern(){
-        boolean status=false;
-       
-        
         return status;
     }
-    
-    public boolean drucken(){
-       boolean status=false;
-                
-       
-       return status;
+
+    public boolean drucken() {
+        boolean status = false;
+
+        return status;
     }
 }
