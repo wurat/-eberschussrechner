@@ -7,38 +7,76 @@ package ueberschussrechner;
 
 /**
  *
- * @author schoe
+ * 
  */
 public class Dateiverarbeitung {
-    double ergebnis=0;
-    // betrag bei Tom deklarieren??
-    //ergebnis bei tom deklarieren??
     
-   /* public double berechne_geladene_Datei () {
-        
-}
-    
-    public double buchen (){
- 
-        //buchungsdatum an die richtige Stelle setzen?
-        // muss die abfrage bei mir stattfinden oder in der gui ??
-        
-        ergebnis=this.ergebnis;
-        ergebnis=this.ergebnis + this.betrag;
-        
-        
-    if (betrag < 0)
-    {
-        //wie kriege ich das ganze an die passende Stelle?? Zu Ausgaben in der pasenden Zeile
-        FileHandler.getArraylist();
+    String [][] data = new String [100][5];
+
+    public void setData(String[][] data) {
+        this.data = data;
     }
+
+    public String[][] getData() {
+        return data;
+    }
+    
+    
+    
+    double ueberschuss=0;
+    double betrag=0;
+    
+    public String berechneSaldo (){
+        int i=0;
+        int j=0;
+        double summeEinnahmen = 0;
+        double summeAusgaben = 0;
+        double ergebnis=0;
+        
+        //Einnahmeschleife
+        while ((this.data[i][1] != null) && (this.data[i][2] != null)){
+            if(this.data[i][1] != null) {
+                System.out.println(Double.parseDouble(this.data[i][1]));
+                summeEinnahmen += Double.parseDouble(this.data[i][1]);
+            }
+            i++;
+        }
+         while ((this.data[j][1] != null) && (this.data[j][2] != null)){
+            if(this.data[j][2] != null) {
+                System.out.println(Double.parseDouble(this.data[j][2]));
+                summeAusgaben += Double.parseDouble(this.data[j][2]);
+            }
+            j++;
+        }
+        
+         ergebnis = summeEinnahmen+summeAusgaben;
+         String saldo = Double.toString(ergebnis);
+         return saldo;
+    }
+    public String [][] addtoArray (String datum, String betrag, String bemerkung, String belegnummer ){
+        
+    int i =0;
+    
+    while (this.data[i][0] != null){
+        i++;
+    }
+    
+    if (betrag.startsWith("-")){
+    
+        data[i][2]=betrag;
+    }
+    
     else {
-       //wie bekomme ich das an die richtige stelle, das gleiche wie oben??? 
+        data [i][1]=betrag;
     }
-    return ergebnis;
-    }
+    
+    data[i][0]=datum;
+    data[i][3]=bemerkung;
+    data[i][4]=belegnummer;
    
-   
+    return data;
+    
     }
-    */
+ 
+    
 }

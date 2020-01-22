@@ -24,7 +24,6 @@ public class FileHandler {
     public String [][] laden(String[][] data) {
         
         
-        
         final String CSVPath = "C:\\Program Files\\data.txt";
         
         
