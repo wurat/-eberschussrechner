@@ -168,6 +168,7 @@ public class GUI extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        Buchungstabelle.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Tabellenscroller.setViewportView(Buchungstabelle);
 
         Datum.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -363,17 +364,22 @@ public class GUI extends javax.swing.JFrame {
     //Buchungsbutton
     private void BuchenbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuchenbuttonActionPerformed
 
-      String tempDatum =  Datumseingabe.getText();
-      Datumseingabe.setText("");
-      String tempBetrag = Betragseingabe.getText();
-      Betragseingabe.setText("");
-      String tempBemerkung = Bemerkungseingabe.getText();
-      Bemerkungseingabe.setText("");
-      String tempBelegnummer = Belegnummereingabe.getText();
-      Belegnummereingabe.setText("");
-      dateiverarbeitung.addtoArray(tempDatum, tempBetrag, tempBemerkung, tempBelegnummer);
-      tabelleFuellen(dateiverarbeitung.getData());
-      Saldoanzeige.setText(dateiverarbeitung.berechneSaldo());
+      //GEN-FIRST:event_BuchenbuttonActionPerformed
+        String tempDatum = Datumseingabe.getText();
+        String tempBetrag = Betragseingabe.getText();
+        String tempBemerkung = Bemerkungseingabe.getText();
+        String tempBelegnummer = Belegnummereingabe.getText();
+        if(tempDatum.equals("") || tempBetrag.equals("") || tempBemerkung.equals("") || tempBelegnummer.equals("")) {
+            System.out.println("Leere Eingabe");
+        } else {
+            Datumseingabe.setText("");
+            Betragseingabe.setText("");
+            Bemerkungseingabe.setText("");
+            Belegnummereingabe.setText("");
+            dateiverarbeitung.addtoArray(tempDatum, tempBetrag, tempBemerkung, tempBelegnummer);
+            tabelleFuellen(dateiverarbeitung.getData());
+            Saldoanzeige.setText(dateiverarbeitung.berechneSaldo());
+        }
     }//GEN-LAST:event_BuchenbuttonActionPerformed
 
 
@@ -382,6 +388,7 @@ public class GUI extends javax.swing.JFrame {
         fileHandler.laden();
         tabelleFuellen(dateiverarbeitung.getData());
         Saldoanzeige.setText(dateiverarbeitung.berechneSaldo());
+        
     }//GEN-LAST:event_LadenbuttonActionPerformed
 
     //JForm befüllen
@@ -398,7 +405,7 @@ public class GUI extends javax.swing.JFrame {
     
     //Speicherbutton
     private void SoeichernbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SoeichernbuttonActionPerformed
-        // TODO add your handling code here:
+        fileHandler.speichern();
     }//GEN-LAST:event_SoeichernbuttonActionPerformed
 
     

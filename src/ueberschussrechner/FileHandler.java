@@ -1,10 +1,14 @@
 package ueberschussrechner;
 
 import java.awt.*;
-import java.util.ArrayList;
+import java.io.PrintWriter;
+import java.io.File;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.awt.print.*;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.BufferedWriter;
 
 public class FileHandler implements Printable {
 
@@ -13,11 +17,10 @@ public class FileHandler implements Printable {
     public FileHandler(Dateiverarbeitung dateiverarbeitung) {
         this.dateiverarbeitung = dateiverarbeitung;
     }
+    
+final String CSVPath = "C:\\Users\\schoe\\Desktop\\data.txt"; //"C:\\Program Files\\data.txt";
 
-    public void laden() {
-
-
-        final String CSVPath = "C:\\Program Files\\data.txt";
+    public void laden() { 
 
 
         try {
@@ -40,19 +43,46 @@ public class FileHandler implements Printable {
             buffer.close();
 
         } catch (Exception e) {
-            System.out.println("Fehler beim Lesen der Datei");
+            
         }
     }
 
-    public boolean speichern() {
-        //StringWriter stringWriter = new StringWriter();
+    public boolean speichern()
+    {
+        
+        
+    try
+    {   
+        BufferedWriter writer = new BufferedWriter(new FileWriter(CSVPath));
+       // String test[][]=dateiverarbeitung.getData();
+        String zeile= "";
+        for(int i = 0; i < 100; i++){
+            if (dateiverarbeitung.getData()[i][0] != null)
+            {
+                zeile =dateiverarbeitung.getData()[i][0]+";"+dateiverarbeitung.getData()[i][1]+";"+dateiverarbeitung.getData()[i][2]+";"+dateiverarbeitung.getData()[i][3]+";"+dateiverarbeitung.getData()[i][4];
+                writer.write(zeile);
+                writer.newLine();
+            }
+            else
+            {
+                break;
+            }
+        }
+        writer.close();
+    }
+     
+    catch(Exception e)
+    {
+         
+    }
+        
+         
+        
+        
+        
         boolean status = false;
 
-        try {
-
-        } catch (Exception e) {
-            System.out.println("Fehler beim Speichern der Datei");
-        }
+      
 
 
         return status;
