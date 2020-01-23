@@ -9,16 +9,28 @@ import java.awt.print.*;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.BufferedWriter;
+import javax.swing.*;
 
 public class FileHandler implements Printable {
 
     Dateiverarbeitung dateiverarbeitung;
 
-    public FileHandler(Dateiverarbeitung dateiverarbeitung) {
+    String CSVPath = "";
+    String CSVPathA = "C:\\Users\\";
+    String CSVPathB = "\\Downloads\\data.txt";
+    String CSVPathUser = "";
+    
+    public FileHandler(Dateiverarbeitung dateiverarbeitung) 
+    {
         this.dateiverarbeitung = dateiverarbeitung;
+        
+      
+        CSVPathUser = JOptionPane.showInputDialog(null, "Zum festlegen des Speicherorts Benutzername eingeben:");
+        CSVPath = CSVPathA+CSVPathUser+CSVPathB;
+        
     }
     
-final String CSVPath = "C:\\Users\\schoe\\Desktop\\data.txt"; //"C:\\Program Files\\data.txt";
+//final String CSVPath = "C:\\Users\\schoe\\Desktop\\data.txt"; //"C:\\Program Files\\data.txt";
 
     public void laden() { 
 

@@ -220,6 +220,7 @@ public class GUI extends javax.swing.JFrame {
         Saldo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         Saldo.setText("Saldo");
 
+        Saldoanzeige.setEditable(false);
         Saldoanzeige.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SaldoanzeigeActionPerformed(evt);
