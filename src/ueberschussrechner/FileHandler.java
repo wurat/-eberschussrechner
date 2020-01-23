@@ -12,54 +12,56 @@ public class FileHandler {
 
     public static void getArraylist() {
         
-        //ArrayList<String> Data = new ArrayList<String>();
-        
     }
 
-    public void berechneMittelwert(double[]a){
-       
+    public void berechneMittelwert(double[]a)
+    {
        a = new double[5];
     }
     
     public String [][] laden(String[][] data) {
         
-        
         final String CSVPath = "C:\\Program Files\\data.txt";
         
-        
-        try {
-           BufferedReader buffer = new BufferedReader(new FileReader(CSVPath)); 
-           String zeile = buffer.readLine(); 
+        try 
+        {
+           // Variablendeklaration
+           BufferedReader buffer = new BufferedReader(new FileReader(CSVPath)); // Deklaration und Instaziiereung des buffered Readers mit der Variable CSVPath als übergabeparameter
+           String zeile = buffer.readLine();                                    // Lesen der ersten Zeile aus der CSV in CSVPath
+           int zeilennummer=0;                                                  // Deklaration und Instaziiereung zeilennummer (Zähler) mit 0)
            
-           int zeilennummer=0;
-           
-            while (zeile != null) {
+            while (zeile != null) {                                             // Lese weiter Zeilen ein, solange bis die aktuelle Zeile leer ist
                 
-                String split[]= zeile.split(";");
-                data[zeilennummer] [0]=split[0] ;
+                String split[]= zeile.split(";");                               // Aufteilen der Zeile in Teil String. Seperator ist ";". Werte weren in array split[] gespeichert 
+                data[zeilennummer] [0]=split[0] ;                               // Das Array Data mit werten aus split (CSV Werte) füllen
                 data[zeilennummer] [1]=split[1] ;
                 data[zeilennummer] [2]=split[2] ;
                 data[zeilennummer] [3]=split[3] ;
                 data[zeilennummer] [4]=split[4] ;
                 
-                zeilennummer ++;
+                zeilennummer ++;                                                // Zähler incrementieren
                 System.out.print(data);
-                zeile = buffer.readLine();
+                zeile = buffer.readLine();                                      // nächste Zeile einlesen
             }
-            buffer.close();
+            
+            buffer.close();                                                     // schließen des streams zur Datei
             System.out.println(data[0][0]);
             
-        } catch (Exception e) {
+        } catch (Exception e) 
+        {
             System.out.println("Fehler beim Lesen der Datei");
         }
+        
         return data;
     }
 
+    
     public boolean speichern() {
         //StringWriter stringWriter = new StringWriter();
         boolean status = false;
-       
-       try{
+    
+       try
+       {
            
        }
        catch(Exception e){
@@ -70,7 +72,8 @@ public class FileHandler {
        return status;
     }
 
-    public boolean drucken() {
+    public boolean drucken() 
+    {
         boolean status = false;
 
         return status;
