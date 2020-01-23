@@ -10,7 +10,6 @@ public class FileHandler implements Printable {
 
     Dateiverarbeitung dateiverarbeitung;
 
-
     public FileHandler(Dateiverarbeitung dateiverarbeitung) {
         this.dateiverarbeitung = dateiverarbeitung;
     }

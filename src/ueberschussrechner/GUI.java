@@ -377,7 +377,6 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_BuchenbuttonActionPerformed
 
 
-
     //Ladenbutton
     private void LadenbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LadenbuttonActionPerformed
         fileHandler.laden();
