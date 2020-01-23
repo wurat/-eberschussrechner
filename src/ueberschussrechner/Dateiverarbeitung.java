@@ -9,10 +9,13 @@ package ueberschussrechner;
  *
  * 
  */
+
 public class Dateiverarbeitung {
-    
+
+    //Attribute
     String [][] data = new String [100][5];
 
+    //Getter&Setter
     public void setData(String[][] data) {
         this.data = data;
     }
@@ -20,12 +23,8 @@ public class Dateiverarbeitung {
     public String[][] getData() {
         return data;
     }
-    
-    
-    
-    double ueberschuss=0;
-    double betrag=0;
-    
+
+    //Methoden
     public String berechneSaldo (){
         int i=0;
         int j=0;
@@ -34,49 +33,45 @@ public class Dateiverarbeitung {
         double ergebnis=0;
         
         //Einnahmeschleife
-        while ((this.data[i][1] != null) && (this.data[i][2] != null)){
-            if(this.data[i][1] != null) {
-                System.out.println(Double.parseDouble(this.data[i][1]));
-                summeEinnahmen += Double.parseDouble(this.data[i][1]);
+        while ((data[i][1] != null) && (data[i][2] != null)){
+            if(data[i][1] != null || !data[i][1].equals("0")) {
+                System.out.println(Double.valueOf(data[i][1]));
+                summeEinnahmen += Double.valueOf(data[i][1]);
             }
             i++;
         }
-         while ((this.data[j][1] != null) && (this.data[j][2] != null)){
-            if(this.data[j][2] != null) {
-                System.out.println(Double.parseDouble(this.data[j][2]));
-                summeAusgaben += Double.parseDouble(this.data[j][2]);
+         while ((data[j][1] != null) && (data[j][2] != null)){
+            if(data[j][2] != null || !data[j][2].equals("0")) {
+                System.out.println(Double.valueOf(data[j][2]));
+                summeAusgaben += Double.valueOf(data[j][2]);
             }
             j++;
         }
         
          ergebnis = summeEinnahmen+summeAusgaben;
-         String saldo = Double.toString(ergebnis);
+         String saldo = String.valueOf(ergebnis);
          return saldo;
     }
-    public String [][] addtoArray (String datum, String betrag, String bemerkung, String belegnummer ){
+    public void addtoArray (String datum, String betrag, String bemerkung, String belegnummer ){
         
     int i =0;
     
-    while (this.data[i][0] != null){
+    while (data[i][0] != null){
         i++;
     }
     
     if (betrag.startsWith("-")){
-    
         data[i][2]=betrag;
-    }
-    
-    else {
-        data [i][1]=betrag;
+        data[i][1]="0";
+    } else {
+        data[i][1]=betrag;
+        data[i][2]="0";
     }
     
     data[i][0]=datum;
     data[i][3]=bemerkung;
     data[i][4]=belegnummer;
-   
-    return data;
     
     }
- 
-    
+
 }

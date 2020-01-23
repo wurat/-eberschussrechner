@@ -379,7 +379,7 @@ public class GUI extends javax.swing.JFrame {
     
     //Ladenbutton
     private void LadenbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LadenbuttonActionPerformed
-        dateiverarbeitung.setData(fileHandler.laden(dateiverarbeitung.getData()));
+        fileHandler.laden();
         tabelleFuellen(dateiverarbeitung.getData());
         Saldoanzeige.setText(dateiverarbeitung.berechneSaldo());
     }//GEN-LAST:event_LadenbuttonActionPerformed
@@ -404,7 +404,7 @@ public class GUI extends javax.swing.JFrame {
     
     //Druckbutton
     private void DruckenbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DruckenbuttonActionPerformed
-        // TODO add your handling code here:
+        fileHandler.drucken();
     }//GEN-LAST:event_DruckenbuttonActionPerformed
 
     
