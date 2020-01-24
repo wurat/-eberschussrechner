@@ -60,10 +60,8 @@ public class FileHandler implements Printable {
     }
 
     public boolean speichern()
-    {
-        
-        
-    try
+    {  
+        try
     {   
         BufferedWriter writer = new BufferedWriter(new FileWriter(CSVPath));
        // String test[][]=dateiverarbeitung.getData();
@@ -87,11 +85,7 @@ public class FileHandler implements Printable {
     {
          
     }
-        
-         
-        
-        
-        
+
         boolean status = false;
 
       
