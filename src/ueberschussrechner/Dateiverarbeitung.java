@@ -125,11 +125,11 @@ public class Dateiverarbeitung {
                     data[j][3] = data[j + 1][3];
                     data[j][4] = data[j + 1][4];
                     zusortieren[j + 1] = temp;
-                    data[j + 1][0] = temp2[j + 1][0];
-                    data[j + 1][1] = temp2[j + 1][1];
-                    data[j + 1][2] = temp2[j + 1][2];
-                    data[j + 1][3] = temp2[j + 1][3];
-                    data[j + 1][4] = temp2[j + 1][4];
+                    data[j + 1][0] = temp2[j][0];
+                    data[j + 1][1] = temp2[j][1];
+                    data[j + 1][2] = temp2[j][2];
+                    data[j + 1][3] = temp2[j][3];
+                    data[j + 1][4] = temp2[j][4];
                 }
             }
         }
