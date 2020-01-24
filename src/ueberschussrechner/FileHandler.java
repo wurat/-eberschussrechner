@@ -64,7 +64,6 @@ public class FileHandler implements Printable {
         try
     {   
         BufferedWriter writer = new BufferedWriter(new FileWriter(CSVPath));
-       // String test[][]=dateiverarbeitung.getData();
         String zeile= "";
         for(int i = 0; i < 100; i++){
             if (dateiverarbeitung.getData()[i][0] != null)
