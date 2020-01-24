@@ -343,7 +343,7 @@ public class GUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    //Setter um den Zugriff von FileHandler auf Dateiverarbeitung und umgekehrt zu ermöglichen
+    //Setter um den Zugriff auf Dateiverarbeitung und FileHandler zu ermöglichen
     public void setDateiverarbeitung(Dateiverarbeitung input) {
         this.dateiverarbeitung = input;
     }

@@ -37,13 +37,13 @@ public class FileHandler implements Printable {
 
         //Exception abfangen
         try {
-            //Lesen der CSVdatei an dem passenden Pfad
+            //Lesen der CSVdatei an dem eingegebenen Pfad
             BufferedReader buffer = new BufferedReader(new FileReader(CSVPath));
             String zeile = buffer.readLine();
 
             int zeilennummer = 0;
             
-            //kopfgesteuerte Schleife um die Werte passend für die CSVdatei zu splitten und mit ; trennen
+            //kopfgesteuerte Schleife um die Werte passend für die CSVdatei zu splitten und mit ; zu trennen
             while (zeile != null) {
 
                 String split[] = zeile.split(";");
@@ -63,12 +63,12 @@ public class FileHandler implements Printable {
     }
     
     //Methode zum speichern des aktuellen Arrays in einer CSVdatei
-    public boolean speichern()
+    public void speichern()
     {  
         //Exception abfangen
         try
     {   
-        //schreiben der Datei und einfügen in den passenden Pfad
+        //schreiben der Datei und einfügen in den eingegebenen Pfad
         BufferedWriter writer = new BufferedWriter(new FileWriter(CSVPath));
         String zeile= "";
         
@@ -77,7 +77,9 @@ public class FileHandler implements Printable {
             if (dateiverarbeitung.getData()[i][0] != null)
             {
                 zeile =dateiverarbeitung.getData()[i][0]+";"+dateiverarbeitung.getData()[i][1]+";"+dateiverarbeitung.getData()[i][2]+";"+dateiverarbeitung.getData()[i][3]+";"+dateiverarbeitung.getData()[i][4];
+                //schreiben in die Zeile
                 writer.write(zeile);
+                //neue Zeile
                 writer.newLine();
             }
             else
@@ -93,32 +95,30 @@ public class FileHandler implements Printable {
          
     }
 
-        boolean status = false;
-
-      
-
-
-        return status;
+        
     }
     
     
-    
+    //Methode zum Ausführen des Drucks
     public int print(Graphics g, PageFormat pf, int Page) throws PrinterException {
         if (Page > 0) {
             return NO_SUCH_PAGE;
         }
+        //Interpretieren des zu druckenden als 2D Grafik
         Graphics2D g2d = (Graphics2D)g;
+        //Übersetzen der Grafik auf Seitenformat
         g2d.translate(pf.getImageableX(), pf.getImageableY());
+        //
         int posY = 50;
-        for(int i=0;i<this.dateiverarbeitung.data.length;i++) {
-            System.out.println(this.dateiverarbeitung.data.length);
+        for(int i=0;i<dateiverarbeitung.getData().length;i++) {
+            System.out.println(dateiverarbeitung.getData().length);
             int posX = 50;
-            if(this.dateiverarbeitung.data[i][0]==null) {
+            if(dateiverarbeitung.getData()[i][0]==null) {
                 break;
             }
-            for(int j=0;j<this.dateiverarbeitung.data[i].length;j++) {
-                System.out.println(this.dateiverarbeitung.data[i].length);
-                g.drawString(this.dateiverarbeitung.data[i][j],posX,posY);
+            for(int j=0;j<dateiverarbeitung.getData()[i].length;j++) {
+                System.out.println(dateiverarbeitung.getData()[i].length);
+                g.drawString(dateiverarbeitung.getData()[i][j],posX,posY);
                 posX+=100;
             }
             posY+=25;
@@ -126,7 +126,7 @@ public class FileHandler implements Printable {
         return PAGE_EXISTS;
     }
 
-    //Methode zum drucken des Arrays 
+    //Methode zum Generieren des Druckauftrags, diese wird von dem Druckbutton aufgerufen
     public boolean drucken() {
         boolean doPrint = false;
 
