@@ -20,27 +20,30 @@ public class FileHandler implements Printable {
     String CSVPathB = "\\Downloads\\data.txt";
     String CSVPathUser = "";
     
+    //Konstruktor und Pfadeingabe
     public FileHandler(Dateiverarbeitung dateiverarbeitung) 
     {
         this.dateiverarbeitung = dateiverarbeitung;
         
-      
+        //Eingabe des Users für den Pfad in dem die CSVdatei gespeichert werden soll 
         CSVPathUser = JOptionPane.showInputDialog(null, "Zum festlegen des Speicherorts Benutzername eingeben:");
         CSVPath = CSVPathA+CSVPathUser+CSVPathB;
         
     }
     
-//final String CSVPath = "C:\\Users\\schoe\\Desktop\\data.txt"; //"C:\\Program Files\\data.txt";
 
+    //Methode zum Laden einer CSVdatei
     public void laden() { 
 
-
+        //Exception abfangen
         try {
+            //Lesen der CSVdatei an dem passenden Pfad
             BufferedReader buffer = new BufferedReader(new FileReader(CSVPath));
             String zeile = buffer.readLine();
 
             int zeilennummer = 0;
-
+            
+            //kopfgesteuerte Schleife um die Werte passend für die CSVdatei zu splitten und mit ; trennen
             while (zeile != null) {
 
                 String split[] = zeile.split(";");
@@ -58,13 +61,18 @@ public class FileHandler implements Printable {
             
         }
     }
-
+    
+    //Methode zum speichern des aktuellen Arrays in einer CSVdatei
     public boolean speichern()
     {  
+        //Exception abfangen
         try
     {   
+        //schreiben der Datei und einfügen in den passenden Pfad
         BufferedWriter writer = new BufferedWriter(new FileWriter(CSVPath));
         String zeile= "";
+        
+        //Schleife um jede Zeile des Arrays in die Datei zu kopieren
         for(int i = 0; i < 100; i++){
             if (dateiverarbeitung.getData()[i][0] != null)
             {
@@ -92,7 +100,9 @@ public class FileHandler implements Printable {
 
         return status;
     }
-
+    
+    
+    
     public int print(Graphics g, PageFormat pf, int Page) throws PrinterException {
         if (Page > 0) {
             return NO_SUCH_PAGE;
@@ -116,6 +126,7 @@ public class FileHandler implements Printable {
         return PAGE_EXISTS;
     }
 
+    //Methode zum drucken des Arrays 
     public boolean drucken() {
         boolean doPrint = false;
 
@@ -123,6 +134,7 @@ public class FileHandler implements Printable {
         printJob.setPrintable(this);
         doPrint = printJob.printDialog();
         if(doPrint) {
+            //Abfangen der Exception
             try {
                 printJob.print();
             } catch(PrinterException e) {

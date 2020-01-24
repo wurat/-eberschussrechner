@@ -10,7 +10,8 @@ package ueberschussrechner;
  * @author RX701
  */
 public class GUI extends javax.swing.JFrame {
-
+    
+    //Deklaration der Attribute
     Dateiverarbeitung dateiverarbeitung;
     FileHandler fileHandler;
     /**
@@ -342,6 +343,7 @@ public class GUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //Setter um den Zugriff von FileHandler auf Dateiverarbeitung und umgekehrt zu ermöglichen
     public void setDateiverarbeitung(Dateiverarbeitung input) {
         this.dateiverarbeitung = input;
     }
@@ -363,9 +365,9 @@ public class GUI extends javax.swing.JFrame {
 
     
     //Buchungsbutton
-    private void BuchenbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuchenbuttonActionPerformed
+    private void BuchenbuttonActionPerformed(java.awt.event.ActionEvent evt) {                                             
 
-      //GEN-FIRST:event_BuchenbuttonActionPerformed
+//GEN-FIRST:event_BuchenbuttonActionPerformed
         String tempDatum = Datumseingabe.getText();
         String tempBetrag = Betragseingabe.getText();
         String tempBemerkung = Bemerkungseingabe.getText();
@@ -392,7 +394,7 @@ public class GUI extends javax.swing.JFrame {
         
     }//GEN-LAST:event_LadenbuttonActionPerformed
 
-    //JForm befüllen
+    //Tabelle mit den Werten aus dem Array befüllen
     private void tabelleFuellen(String[][] input) {
         for (int i=0; i < input.length; i++) {
         
