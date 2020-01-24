@@ -15,6 +15,6 @@ public class Ueberschussrechner {
         gui.setDateiverarbeitung(dateiverarbeitung);
         gui.setFileHandler(fileHandler);
         //Sortierung
-        gui.Buchungstabelle.setAutoCreateRowSorter(true);
+        //gui.Buchungstabelle.setAutoCreateRowSorter(true);
     }
 }

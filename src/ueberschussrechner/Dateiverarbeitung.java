@@ -87,7 +87,7 @@ public class Dateiverarbeitung {
         data[i][4] = belegnummer;
     }
 
-    public void sortieren() {
+    /*public void sortieren() {                                          //Funktioniert nicht - zu großer Zeitaufwand
         String zeile;
         int i = 0;
         int datum[] = new int[100];
@@ -135,4 +135,5 @@ public class Dateiverarbeitung {
         }
         return zusortieren;
     }
+*/
 }
