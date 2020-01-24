@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package ueberschussrechner;
+import java.util.regex.*;
 
 /**
  *
@@ -82,7 +84,44 @@ public class Dateiverarbeitung {
     data[i][0]=datum;
     data[i][3]=bemerkung;
     data[i][4]=belegnummer;
-    
     }
-
+    
+    public void sortieren ()
+    {   
+        String zeile;
+        int i=0;
+        int datum[] = new int [100];
+        String temp;
+        while (data[i][0]!= null)                                       // befüllen des Arrays im Format JahrMonatTag
+        {
+            System.out.println(data[i][0]);
+            temp = data[i][0];
+            String split[] = temp.split(Pattern.quote("."));
+            System.out.println(split[0]+split[1]+split[2]);
+            zeile=split[2]+split[1]+split[0];
+            datum[i]=Integer.parseInt(zeile);
+            i++;
+        }
+        bubblesort(datum);
+    }
+    
+    public int[] bubblesort(int[] zusortieren)                       //http://www.java-programmieren.com/bubblesort-java.php
+    {           
+                String temp2[][] = new String [100][5];
+		int temp;
+		for(int i=1; i<zusortieren.length; i++) {
+			for(int j=0; j<zusortieren.length-i; j++) {
+				if(zusortieren[j]>zusortieren[j+1]) {
+					temp=zusortieren[j];                
+                                            temp2[j][0]= data[j][0];    temp2[j][1]= data[j][1];    temp2[j][2]= data[j][2];    temp2[j][3]= data[j][3];    temp2[j][4]= data[j][4];         
+					zusortieren[j]=zusortieren[j+1];
+                                            temp2[j][0]=data[j+1][0];   temp2[j][0]=data[j+1][1];   temp2[j][0]=data[j+1][2];   temp2[j][0]=data[j+1][3];   temp2[j][0]=data[j+1][4];
+					zusortieren[j+1]=temp;
+                                            data[j+1][0]= temp2[j+1][0];    data[j+1][1]= temp2[j+1][1];    data[j+1][2]= temp2[j+1][2];    data[j+1][3]= temp2[j+1][3];    data[j+1][4]= temp2[j+1][4];
+				}   
+				
+			}
+		}
+		return zusortieren;
+	}
 }

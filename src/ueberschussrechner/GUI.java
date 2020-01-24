@@ -344,11 +344,13 @@ public class GUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     //Setter um den Zugriff auf Dateiverarbeitung und FileHandler zu ermöglichen
-    public void setDateiverarbeitung(Dateiverarbeitung input) {
+    public void setDateiverarbeitung(Dateiverarbeitung input) 
+    {
         this.dateiverarbeitung = input;
     }
     
-    public void setFileHandler(FileHandler input) {
+    public void setFileHandler(FileHandler input) 
+    {
         this.fileHandler = input;
     }
     
@@ -380,8 +382,10 @@ public class GUI extends javax.swing.JFrame {
             Bemerkungseingabe.setText("");
             Belegnummereingabe.setText("");
             dateiverarbeitung.addtoArray(tempDatum, tempBetrag, tempBemerkung, tempBelegnummer);
+            dateiverarbeitung.sortieren();
             tabelleFuellen(dateiverarbeitung.getData());
             Saldoanzeige.setText(dateiverarbeitung.berechneSaldo());
+            
         }
     }//GEN-LAST:event_BuchenbuttonActionPerformed
 
@@ -389,6 +393,7 @@ public class GUI extends javax.swing.JFrame {
     //Ladenbutton
     private void LadenbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LadenbuttonActionPerformed
         fileHandler.laden();
+        dateiverarbeitung.sortieren();
         tabelleFuellen(dateiverarbeitung.getData());
         Saldoanzeige.setText(dateiverarbeitung.berechneSaldo());
         

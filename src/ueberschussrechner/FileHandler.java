@@ -56,7 +56,6 @@ public class FileHandler implements Printable {
                 zeile = buffer.readLine();
             }
             buffer.close();
-
         } catch (Exception e) {
             
         }
@@ -141,7 +140,6 @@ public class FileHandler implements Printable {
                 System.out.println("Drucken fehlgeschlagen");
             }
         }
-
         return doPrint;
     }
 }
