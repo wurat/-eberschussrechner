@@ -86,6 +86,7 @@ public class Dateiverarbeitung {
         data[i][3] = bemerkung;
         data[i][4] = belegnummer;
     }
+    
 
     /*public void sortieren() {                                          //Funktioniert nicht - zu großer Zeitaufwand
         String zeile;
